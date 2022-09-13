@@ -17,17 +17,13 @@ const Gameboard = () => {
 
     const shipFitsHorizontally = (column, size) => column + size <= 10;
 
-    const placeShipVertically = (row = 0, column = 0, size = 5) => {
-        if (shipFitsVertically(row, size)) {
-            for (let i = row; i <= size+1; i++) {
+    const placeShipVertically = (row, column, size = 5) => {
+            for (let i = row; i <= size+row; i++) { // off by one why
                 const newrow = new Array(10).fill(0)
-                newrow.splice(column, 1, "a")
+                newrow[column] = "a"
                 board[i] = newrow
             }
         console.log(board)
-        } else {
-            console.log("Ship doesn't fit vertically")
-        }
     }
 
     const shipFitsVertically = (row, size) =>  row + size <= 10;
