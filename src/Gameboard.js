@@ -11,7 +11,7 @@ const Gameboard = () => {
         console.log(board)
     }
 
-    const shipFits = ( column, size) => column + size > 10
+    const shipFits = ( column, size) => column + size < 10 
 
 
     return {

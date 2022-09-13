@@ -1,4 +1,5 @@
 const Gameboard = require("./Gameboard")
 const Ship = require("./Ship")
 let b = Gameboard()
-b.placeShip(2,3)
+b.placeShip(2,7, 5)
+console.log(b.shipFits(5,7))
