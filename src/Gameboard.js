@@ -3,7 +3,7 @@ const Ship = require("./Ship")
 const Gameboard = () => {
     let board = new Array(10).fill(new Array(10).fill(0))
 
-    const placeShip = (row = 0, column = 0, size = 5) => {
+    const placeShipHorizontally = (row = 0, column = 0, size = 5) => {
         if(shipFits(column, size)) {
             const ship = new Array(size).fill("a")
             const newrow = new Array(10).fill(0)
@@ -15,12 +15,22 @@ const Gameboard = () => {
         }
     }
 
-    const shipFits = (column, size) => column + size <= 10 
+    const shipFitsHorizontally = (column, size) => column + size <= 10;
+
+    const placeShipVertically = (row = 0, column = 0, size = 5) => {
+        for (let i = row; i < size; i++) {
+            const newrow = new Array(10).fill(0)
+            newrow.splice(column, 1, "a")
+            board[i] = newrow
+        }
+        console.log(board)
+    }
 
 
     return {
-        placeShip,
-        shipFits,
+        placeShipHorizontally,
+        shipFitsHorizontally,
+        placeShipVertically,
         get board() { return board}
     }
 }
