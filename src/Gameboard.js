@@ -5,11 +5,15 @@ const Gameboard = () => {
 
     const placeShipHorizontally = (row = 0, column = 0, size = 5) => {
         if(shipFitsHorizontally(column, size)) {
-            const ship = new Array(size).fill("a")
-            const newrow = new Array(10).fill(0)
-            newrow.splice(column, size, ...ship)
-            board[row] = newrow
-            console.log(board)
+            if(!board[row].includes("a")) {
+                const ship = new Array(size).fill("a")
+                const newrow = new Array(10).fill(0)
+                newrow.splice(column, size, ...ship)
+                board[row] = newrow
+                console.log(board)
+            } else {
+                console.log("Obstructed")
+            }
         } else {
             console.log("Ship doesn't fit horizontally")
         }
@@ -21,9 +25,9 @@ const Gameboard = () => {
         if(shipFitsVertically(row, size)){
             for (let i = row; i <= size+row; i++) {
                 if(board[i][column] !== "a"){
-                const newrow = new Array(10).fill(0)
-                newrow[column] = "a"
-                board[i] = newrow
+                    const newrow = new Array(10).fill(0)
+                    newrow[column] = "a"
+                    board[i] = newrow
                 } else {
                     console.log("Obstructed")
                     break
