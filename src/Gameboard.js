@@ -6,14 +6,17 @@ const Gameboard = () => {
     const placeShip = (row = 0, column = 0, size = 5) => {
         const ship = new Array(size).fill("a")
         const newrow = new Array(10).fill(0)
-        newrow.splice(column, column + size, ...ship)
+        newrow.splice(column, size, ...ship)
         board[row] = newrow
         console.log(board)
     }
 
+    const shipFits = ( column, size) => column + size > 10
+
 
     return {
         placeShip,
+        shipFits,
         get board() { return board}
     }
 }
